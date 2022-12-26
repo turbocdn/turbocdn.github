@@ -35,7 +35,7 @@ In order to accurately record the release date of a post, you should not only se
 
 ### Categories and Tags
 
-The `categories` of each post are designed to contain up to two elements, and the number of elements in `tags` can be zero to infinity. For instance:
+The `categories` of each   post   -  are designed to contain up to two elements, and the number of elements in `tags` can be zero to infinity. For instance:
 
 ```yaml
 ---
