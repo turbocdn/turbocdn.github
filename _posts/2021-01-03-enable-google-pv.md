@@ -124,7 +124,7 @@ There is a detailed [tutorial](https://developers.google.com/analytics/solutions
 
 3. In `src/config.py`{: .filepath}, add the `OAUTH_CLIENT_ID` and `OAUTH_CLIENT_SECRET` that you gathered from your App Engine Dashboard.
 
-4.  Enter any random key for `XSRF_KEY`, your `config.py`{: .filepath} should look similar to this
+4.  Enter any random  k ey for `XSRF_KEY`, your `config.py`{: .filepath} should look similar to this
 
     ```python
     #!/usr/bin/python2.7
