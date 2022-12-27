@@ -202,7 +202,6 @@ jekyll-archives:
     
     
 plugins:
-  - jekyll-feed
   - jekyll-sitemap
   - jekyll-target-blank
   - jekyll-loading-lazy
