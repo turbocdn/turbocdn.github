@@ -205,3 +205,4 @@ plugins:
   - jekyll-sitemap
   - jekyll-target-blank
   - jekyll-loading-lazy
+  - jekyll-feed
