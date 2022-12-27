@@ -211,6 +211,5 @@ plugins:
   - jemoji
   - jekyll-target-blank
   - jekyll-loading-lazy
-  - jekyll-gzip
   # - jekyll-compress-images
   # - amp-jekyll
