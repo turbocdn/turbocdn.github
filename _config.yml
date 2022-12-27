@@ -208,9 +208,9 @@ plugins:
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
-  - jekyll-include-cache
   - jemoji
   - jekyll-target-blank
   - jekyll-loading-lazy
+  - jekyll-gzip
   # - jekyll-compress-images
   # - amp-jekyll
