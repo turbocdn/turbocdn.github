@@ -198,3 +198,20 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+    
+    
+    
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jemoji
+  - jekyll-include-cache
+  - jekyll-target-blank
+  - jekyll-loading-lazy
+  - jekyll-gzip
+  # - jekyll-compress-images
+  # - amp-jekyll
