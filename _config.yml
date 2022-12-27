@@ -209,9 +209,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-gist
   - jemoji
-  - jekyll-include-cache
   - jekyll-target-blank
   - jekyll-loading-lazy
-  - jekyll-gzip
   # - jekyll-compress-images
   # - amp-jekyll
