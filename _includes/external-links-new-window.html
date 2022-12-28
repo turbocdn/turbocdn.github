@@ -1,19 +1,33 @@
-<script>
-function makeExternal(link) {
-  var url      = link.getAttribute('href'),
-  host         = window.location.hostname.toLowerCase(),
-  regex        = new RegExp('^(?:(?:f|ht)tp(?:s)?\:)?//(?:[^\@]+\@)?([^:/]+)', 'im'),
-  match        = url.match(regex),
-  domain       = ((match ? match[1].toString() : ((url.indexOf(':') < 0) ? host : ''))).toLowerCase();
-  
-  // Same domain
-  if (domain != host) {
-    link.className    = 'outbound';
-    link.setAttribute('target', '_blank');    
-  }
-}
+$(document).ready(function() {
 
-for (var l = 0, links = document.querySelectorAll('a'), ll = links.length; l < ll; ++l ){
-   makeExternal(links[l]); 
-}
-</script>
+   $('a[href^="https://"],a[href^="http://"]').each(function(){
+
+      // NEW - excluded domains list
+      var excludes = [
+         'google.com',
+         'www.example.com',
+         '*.example.com',
+          '#'
+      ];
+      for(i=0; i<excludes.length; i++) {
+         if(this.href.indexOf(excludes[i]) != -1) {
+            return true; // continue each() with next link
+         }
+      }
+
+      if(this.href.indexOf(location.hostname) == -1) {
+
+           // attach a do-nothing event handler to ensure we can 'trigger' a click on this link
+           $(this).click(function() { return true; }); 
+
+           $(this).attr({
+               target: "_blank",
+               rel: "noreferrer nofollow noopener",
+               title: "Opens in a new window"
+           });
+
+           $(this).click(); // trigger it
+      }
+   })
+     
+});
