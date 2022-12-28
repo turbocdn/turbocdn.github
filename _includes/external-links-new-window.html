@@ -1,33 +1,13 @@
-$(document).ready(function() {
-
-   $('a[href^="https://"],a[href^="http://"]').each(function(){
-
-      // NEW - excluded domains list
-      var excludes = [
-         'google.com',
-         'www.example.com',
-         '*.example.com',
-          '#'
-      ];
-      for(i=0; i<excludes.length; i++) {
-         if(this.href.indexOf(excludes[i]) != -1) {
-            return true; // continue each() with next link
-         }
-      }
-
-      if(this.href.indexOf(location.hostname) == -1) {
-
-           // attach a do-nothing event handler to ensure we can 'trigger' a click on this link
-           $(this).click(function() { return true; }); 
-
-           $(this).attr({
-               target: "_blank",
-               rel: "noreferrer nofollow noopener",
-               title: "Opens in a new window"
-           });
-
-           $(this).click(); // trigger it
-      }
-   })
-     
-});
+function targetBlank() {
+  // remove subdomain of current site's url and setup regex
+  var internal = location.host.replace("www.", "");
+      internal = new RegExp(internal, "i", "#");
+      
+  var a = document.getElementsByTagName('a'); // then, grab every link on the page
+  for (var i = 0; i < a.length; i++) {
+    var href = a[i].host; // set the host of each link
+    if( !internal.test(href) ) { // make sure the href doesn't contain current site's host
+      a[i].setAttribute('target', '_blank'); // if it doesn't, set attributes
+    }
+  }
+};
