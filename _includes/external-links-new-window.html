@@ -1,19 +1,33 @@
 <script>
-function externalLinks() {
-	if (!document.getElementsByTagName) return;
-	var anchors = document.getElementsByTagName("a");
-	for (var i=0; i<anchors.length; i++) {
-		var anchor = anchors[i];
-		if (
-			anchor.getAttribute("href") && ( 
-			anchor.getAttribute("rel") == "external" || 
-			anchor.getAttribute("rel") == "external nofollow" || 
-			anchor.getAttribute("rel") == "nofollow external" )
-			)
-		anchor.target = "_blank";
-	}
+function ready(fn) {
+  if (document.readyState != 'loading') {
+    fn();
+  } else if (document.addEventListener) {
+    document.addEventListener('DOMContentLoaded', fn);
+  } else {
+    document.attachEvent('onreadystatechange', function() {
+      if (document.readyState != 'loading')
+        fn();
+    });
+  }
 }
-window.onload = function() {
-	externalLinks();
-}
+
+ready(function() {
+
+  var website = window.location.hostname;
+
+  var internalLinkRegex = new RegExp('^((((http:\\/\\/|https:\\/\\/)(www\\.)?)?'
+                                     + website
+                                     + ')|(localhost:\\d{4})|(\\/.*))(\\/.*)?$', '', '#');
+
+  var anchorEls = document.querySelectorAll('a');
+  var anchorElsLength = anchorEls.length;
+
+  for (var i = 0; i < anchorElsLength; i++) {
+    var anchorEl = anchorEls[i];
+    var href = anchorEl.getAttribute('href');
+
+    if (!internalLinkRegex.test(href)) {
+      anchorEl.setAttribute('target', '_blank');
+});
 </script>
